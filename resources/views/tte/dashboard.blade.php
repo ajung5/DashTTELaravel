@@ -22,7 +22,8 @@
                 <select name="unit" onchange="this.form.submit()">
                     <option value="">Semua unit kerja</option>
                     @foreach ($units as $unit)
-                        <option value="{{ $unit }}" @selected($selectedUnit === $unit)>{{ $unit }}</option>
+                        <option value="{{ $unit }}" {{ $selectedUnit === $unit ? 'selected' : '' }}>
+                            {{ $unit }}</option>
                     @endforeach
                 </select>
             </label>
@@ -66,7 +67,8 @@
                         <div class="bar-item">
                             <div class="bar-caption">
                                 <span>{{ $item->status_kepegawaian }}</span><strong>{{ number_format($item->total, 0, ',', '.') }}
-                                    <small>({{ number_format($percent, 1, ',', '.') }}%)</small></strong></div>
+                                    <small>({{ number_format($percent, 1, ',', '.') }}%)</small></strong>
+                            </div>
                             <div class="bar-track"><i style="width: {{ min(100, $percent) }}%"></i></div>
                         </div>
                     @empty <p class="empty-state">Belum ada data status kepegawaian.</p>
@@ -87,7 +89,8 @@
                         <div class="bar-item">
                             <div class="bar-caption">
                                 <span>{{ $item->status_pegawai }}</span><strong>{{ number_format($item->total, 0, ',', '.') }}
-                                    <small>({{ number_format($percent, 1, ',', '.') }}%)</small></strong></div>
+                                    <small>({{ number_format($percent, 1, ',', '.') }}%)</small></strong>
+                            </div>
                             <div class="bar-track"><i class="bar-alt" style="width: {{ min(100, $percent) }}%"></i></div>
                         </div>
                     @empty <p class="empty-state">Belum ada data status pegawai.</p>
@@ -123,7 +126,8 @@
                                 <td>
                                     <div class="inline-progress">
                                         <span>{{ number_format($unitPercent, 1, ',', '.') }}%</span><i><b
-                                                style="width: {{ min(100, $unitPercent) }}%"></b></i></div>
+                                                style="width: {{ min(100, $unitPercent) }}%"></b></i>
+                                    </div>
                                 </td>
                             </tr>
                         @empty <tr>
